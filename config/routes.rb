@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :line_items
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :carts
   root 'pages#home'
   resources :products

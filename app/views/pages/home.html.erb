@@ -130,7 +130,9 @@
                                 <div class="product-f-image">
                                     <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg' %>
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <%= link_to line_items_path(product_id: product), class: 'add-to-cart-link', method: :post do %>
+                                            <i class="fa fa-shopping-cart"></i> Add to cart
+                                        <% end %>
                                         <%= link_to product, class: 'view-details-link' do %>
                                             <i class="fa fa-link"></i> See details
                                         <% end %>
