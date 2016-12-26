@@ -100,14 +100,15 @@
                                     <ins><%= @product.price %></ins> <del>$800.00</del>
                                 </div>    
                                 
-                                <form action="" class="cart">
+                                <!--<form action="" class="cart">-->
                                     <div class="quantity">
                                         <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                     </div>
-                                    <button class="add_to_cart_button" type="submit">Add to cart</button>
+                                    <%= button_to 'Add to Cart', line_items_path(product_id: @product), class: 'add_to_cart_button' %>
+                                    <!--<button class="add_to_cart_button" type="submit">Add to cart</button>-->
                                     <%= link_to 'Edit', edit_product_path(@product), class: 'add_to_cart_button' %>
                                     <%= link_to 'Back', products_path, class: 'add_to_cart_button' %>
-                                </form>   
+                                <!--</form>   -->
                                 
                                 <div class="product-inner-category">
                                     <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
