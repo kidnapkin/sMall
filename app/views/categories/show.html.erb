@@ -1,7 +1,25 @@
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2><%= @category.name %></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+              <%= render 'subcategories', categories: @category.root.descendants.arrange %>
+            </div>
+            <div class="col-md-9">
+                
+            </div>
+        </div>
+    </div>
+</div>

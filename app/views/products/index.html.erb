@@ -1,51 +1,48 @@
 <div class="product-big-title-area">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="product-bit-title text-center">
-                      <h2>Shop</h2>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   
-  
-  <div class="single-product-area">
-      <div class="zigzag-bottom"></div>
-      <div class="container">
-          <div class="row">
-              <% @products.each do |product| %>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="single-shop-product">
-                        <div class="product-upper">
-                            <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg' %>
-                        </div>
-                        <h2><%= link_to product.name, product %></h2>
-                        <div class="product-carousel-price">
-                            <ins>$<%= product.price %></ins> <del>$999.00</del>
-                        </div>  
-                        
-                        <div class="product-option-shop">
-                            <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'add_to_cart_button' %>
-                        </div>                       
-                    </div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <% @products.each do |product| %>
+                <div class="col-md-3 col-sm-6">
+                  <div class="single-shop-product">
+                      <div class="product-upper">
+                          <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg' %>
+                      </div>
+                      <h2><%= link_to product.name, product %></h2>
+                      <div class="product-carousel-price">
+                          <ins>$<%= product.price %></ins> <del>$999.00</del>
+                      </div>  
+                      
+                      <div class="product-option-shop">
+                          <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'add_to_cart_button' %>
+                      </div>                       
                   </div>
-              <% end %>
-
-          </div>
-          
-          <%= link_to 'New Product', new_product_path %>
-          
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="product-pagination text-center">
-                      <nav>
-                        <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
-                      </nav>                        
-                  </div>
-                
-              </div>
-          </div>
-      </div>
-  </div>
+                </div>
+            <% end %>
+        </div>
+        
+        <%= link_to 'New Product', new_product_path %>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-pagination text-center">
+                    <nav>
+                      <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+                    </nav>                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

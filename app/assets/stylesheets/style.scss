@@ -1008,7 +1008,10 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   color: #1abc9c;
 }
 
-.pagination > li.active a {
+.pagination > li.active a,
+.pagination > li.active a:hover,
+.pagination > li.active a:focus,
+.pagination > li.active a:active {
   background-color: #1abc9c;
-  border-color: #1abc9c;
+  border: 1px solid #ddd;
 }

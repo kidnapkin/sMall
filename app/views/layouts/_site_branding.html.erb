@@ -13,7 +13,9 @@
             
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.html">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <%= link_to @cart do %>
+                      Cart - <span class="cart-amunt"><%= number_to_currency(@cart.total_price) %></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%= @cart.line_items.count %></span>
+                    <% end %>
                 </div>
             </div>
         </div>
