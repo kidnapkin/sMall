@@ -23,9 +23,7 @@
     <%= render 'layouts/site_branding' %>
     <%= render 'layouts/main_menu' %>
     
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-    <% end %>
+    <%= render 'layouts/messages' %>
     
     <%= yield %>
     

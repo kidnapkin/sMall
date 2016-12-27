@@ -49,8 +49,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.7'
-gem 'faker',                   '1.6.6'
+gem 'faker',                    github: 'stympy/faker'
 gem 'carrierwave',             '0.11.2'
 gem 'mini_magick',             '4.5.1'
 gem 'fog',                     '1.38.0'
+gem 'ancestry'
 gem 'rails_admin', '~> 1.1'
