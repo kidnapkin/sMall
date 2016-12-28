@@ -22,6 +22,9 @@ module AncestryHelper
       when :bootstrap_list_group
         options[:ul_class] << ['list-group']
         options[:li_class] << ['list-group-item']
+      when :bootstrap_nav_pills
+        options[:ul_class] << ['nav nav-pills nav-stacked']
+        options[:li_class] << ['']
     end
     options[:list_style] = ''
 

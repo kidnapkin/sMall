@@ -1015,3 +1015,18 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   background-color: #1abc9c;
   border: 1px solid #ddd;
 }
+
+.nav.nav-pills.nav-stacked {
+  margin: 0;
+}
+
+.nav-pills li.active > a,
+.nav-pills li.active > a:hover,
+.nav-pills li.active > a:focus,
+.nav-pills li.active > a:active {
+  background-color: #1abc9c;
+}
+
+.nested_nav {
+  margin-left: 1em !important;
+}
