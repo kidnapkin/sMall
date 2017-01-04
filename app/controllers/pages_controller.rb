@@ -3,6 +3,5 @@ class PagesController < ApplicationController
     @products = Product.limit(6)
   end
 
-  def about
-  end
+  def about; end
 end

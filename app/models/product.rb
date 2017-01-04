@@ -1,16 +1,34 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  price       :decimal(8, 2)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  image       :string
+#  category_id :string
+#
+
 class Product < ApplicationRecord
+  validates :name, :description, :price, presence: true
+
   mount_uploader :image, ProductImageUploader
   has_many :line_items
   belongs_to :category
   before_destroy :ensure_not_referenced_by_any_line_item
-  
-  
+
+  has_many :product_properties, dependent: :destroy
+  has_many :properties, through: :product_properties
+
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
-      return true
+      true
     else
       errors.add(:base, 'line items exist')
-      return false
+      false
     end
   end
 end

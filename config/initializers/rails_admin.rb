@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -22,9 +21,9 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
-  
+
   config.model Category do
-  field :name
+    field :name
     field :parent_id, :enum do
       enum_method do
         :parent_enum

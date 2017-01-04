@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.0.0', '>= 5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -52,7 +51,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Awesome icon set
 gem 'font-awesome-rails', '~> 4.7'
 # Generate fake data
-gem 'faker',                    github: 'stympy/faker'
+gem 'faker', github: 'stympy/faker'
 # Uploader generator
 gem 'carrierwave',             '0.11.2'
 # Image processitg
@@ -61,7 +60,8 @@ gem 'fog',                     '1.38.0'
 # Tree structured models
 gem 'ancestry'
 # Cute admin panel
-gem 'rails_admin', '~> 1.1'
+gem 'rails_admin', '~> 1.1.1'
 # Paginatorss
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
+gem 'annotate'

@@ -13,15 +13,19 @@
 #                     image:                  Faker::Placeholdit.image)
 # end
 
-8.times do |n|
+8.times do |_n|
   Category.create!(name: Faker::Beer.style)
 end
 
-Category.all.each do | category |
+Category.all.each do |category|
   5.times do
     category.products.create!(name:         Faker::Beer.name,
                               description:  Faker::Hipster.paragraphs,
                               price:        Faker::Number.decimal(2),
                               image:        Faker::Placeholdit.image)
   end
+end
+
+8.times do |_n|
+  Property.create!(name: Faker::Color.color_name)
 end

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: line_items
+#
+#  id         :integer          not null, primary key
+#  product_id :integer
+#  cart_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  quantity   :integer          default(1)
+#
+
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create, :destroy]
@@ -11,8 +23,7 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1
   # GET /line_items/1.json
-  def show
-  end
+  def show; end
 
   # GET /line_items/new
   def new
@@ -20,8 +31,7 @@ class LineItemsController < ApplicationController
   end
 
   # GET /line_items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /line_items
   # POST /line_items.json
@@ -65,13 +75,14 @@ class LineItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_line_item
-      @line_item = LineItem.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id, :quantity)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_line_item
+    @line_item = LineItem.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def line_item_params
+    params.require(:line_item).permit(:product_id, :cart_id, :quantity)
+  end
 end
