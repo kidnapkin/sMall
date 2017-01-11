@@ -13,6 +13,7 @@
                       <h2><%= link_to product.name, product %></h2>
                       <div class="product-carousel-price">
                           <ins>$<%= product.price %></ins> <del>$999.00</del>
+                          <p><%= show_stars(product) %></p>
                       </div>  
                       
                       <div class="product-option-shop">
@@ -22,8 +23,6 @@
                 </div>
             <% end %>
         </div>
-        
-        <%= link_to 'New Product', new_product_path %>
         
         <div class="row">
             <div class="col-md-12">
