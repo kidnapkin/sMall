@@ -39,12 +39,10 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="product-breadcroumb">
-                        <!--<a href="">Home</a>-->
-                        <!--<a href="">Category Name</a>-->
-                        <!--<a href="">Sony Smart TV - 2015</a>-->
                         
                         <%= link_to 'Home', root_path %>
-                        <%= render 'categories/subcategories', categories: @product.category.descendants.arrange %>
+                        <%= render 'categories/breadcrumbs', categories: @product.category.ancestors.arrange %>
+                        <%= link_to @product.category.name, @product.category %>
                         
                     </div>
                     
@@ -55,12 +53,12 @@
                                     <%= image_tag @product.image? ? @product.image.url : 'product-placeholder.jpg' %>
                                 </div>
                                 
-                                <div class="product-gallery">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                </div>
+                                <!--<div class="product-gallery">-->
+                                    <% # image_tag "product-6.jpg", alt: '' %>
+                                    <% # image_tag "product-6.jpg", alt: '' %>
+                                    <% # image_tag "product-6.jpg", alt: '' %>
+                                    <% # image_tag "product-6.jpg", alt: '' %>
+                                <!--</div>-->
                             </div>
                         </div>
                         
