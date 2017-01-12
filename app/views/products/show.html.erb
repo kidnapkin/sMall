@@ -15,44 +15,23 @@
                 
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
-                    <div class="thubmnail-recent">
-                        <%= image_tag "product-6.jpg", alt: '', class: 'recent-thumb' %>
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <%= image_tag "product-6.jpg", alt: '', class: 'recent-thumb' %>
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <%= image_tag "product-6.jpg", alt: '', class: 'recent-thumb' %>
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <%= image_tag "product-6.jpg", alt: '', class: 'recent-thumb' %>
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>                             
-                    </div>
+                    <% @new_products.each do |product| %>
+                        <div class="thubmnail-recent">
+                            <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg', alt: '', class: 'recent-thumb' %>
+                            <h2><%= link_to product.name, product %></h2>
+                            <div class="product-sidebar-price">
+                                <ins><%= number_to_currency(product.price) %></ins> <del>$800.00</del>
+                            </div>                             
+                        </div>
+                    <% end %>
                 </div>
                 
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Recent Posts</h2>
                     <ul>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <% @new_products.each do |product| %>
+                            <li><%= link_to product.name, product %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>
@@ -60,9 +39,13 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="product-breadcroumb">
-                        <a href="">Home</a>
-                        <a href="">Category Name</a>
-                        <a href="">Sony Smart TV - 2015</a>
+                        <!--<a href="">Home</a>-->
+                        <!--<a href="">Category Name</a>-->
+                        <!--<a href="">Sony Smart TV - 2015</a>-->
+                        
+                        <%= link_to 'Home', root_path %>
+                        <%= render 'categories/subcategories', categories: @product.category.descendants.arrange %>
+                        
                     </div>
                     
                     <div class="row">
@@ -172,8 +155,6 @@
                     </div>
                     
 
-                    
-                    
                     <div class="related-products-wrapper">
                         <h2 class="related-products-title">Related Products</h2>
                         <div class="related-products-carousel">
