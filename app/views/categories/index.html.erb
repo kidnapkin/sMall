@@ -23,23 +23,7 @@
           </div>
             <div class="col-md-9">
                 <div class="row is-flex">
-                    <% @products.each do |product| %>
-                        <div class="col-md-3 col-sm-6">
-                          <div class="single-shop-product">
-                              <div class="product-upper">
-                                  <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg' %>
-                              </div>
-                              <h2><%= link_to product.name, product %></h2>
-                              <div class="product-carousel-price">
-                                  <ins>$<%= product.price %></ins> <del>$999.00</del>
-                              </div>  
-                              
-                              <div class="product-option-shop">
-                                  <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'add_to_cart_button' %>
-                              </div>                       
-                          </div>
-                        </div>
-                    <% end %>
+                    <%= render @products || 'There are no products available.' %>
                 </div>
   
                 <div class="row">
