@@ -11,12 +11,8 @@
                 </div>
             </div>
             
-            <div class="col-sm-6">
-                <div class="shopping-item">
-                    <%= link_to @cart do %>
-                      Cart - <span class="cart-amunt"><%= number_to_currency(@cart.total_price) %></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%= @cart.line_items.count %></span>
-                    <% end %>
-                </div>
+            <div class="col-sm-6" id="header-cart">
+              <%= render 'layouts/header_cart' %>
             </div>
         </div>
     </div>
