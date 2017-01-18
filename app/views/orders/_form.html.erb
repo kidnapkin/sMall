@@ -1,0 +1,38 @@
+<%= form_for(order, class: "checkout") do |f| %>
+  <%= render 'shared/error_messages', object: order %>
+  
+  <div id="customer_details">
+
+    <div class="woocommerce-billing-fields">
+    <h3>Billing Details</h3>
+
+    <div class="form-row form-row-first validate-required">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "input-text" %>
+    </div>
+  
+    <div class="form-row form-row-first validate-required">
+      <%= f.label :address %>
+      <%= f.text_area :address %>
+    </div>
+  
+    <div class="form-row form-row-first validate-required">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+  
+    <div class="form-row form-row-first validate-required">
+      <%= f.label :pay_type %>
+      <%= f.select :pay_type, Order.pay_types.keys,
+                              prompt: 'Select a payment method', class: "country_to_state country_select" %>
+    </div>
+  
+    <div class="form-row place-order">
+      <%= f.submit 'Place Order' %>
+    </div>
+    
+    </div>
+  
+  </div>
+  
+<% end %>
