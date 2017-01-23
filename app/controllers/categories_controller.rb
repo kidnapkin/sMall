@@ -16,14 +16,14 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
-    @products = Product.paginate(page: params[:page], per_page: 8)
+    @products = Product.includes(:reviews).paginate(page: params[:page], per_page: 8)
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
     @categories = Category.all
-    @products = Product.where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 8)
+    @products = Product.includes(:reviews).where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 8)
   end
 
   # GET /categories/new

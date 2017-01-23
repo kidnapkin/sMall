@@ -12,7 +12,9 @@
             </div>
             
             <div class="col-sm-6" id="header-cart">
-              <%= render 'layouts/header_cart' %>
+              <% if @cart %>
+                <%= render 'layouts/header_cart' %>
+              <% end %>
             </div>
         </div>
     </div>
