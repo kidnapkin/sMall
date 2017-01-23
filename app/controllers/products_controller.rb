@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 
   def show
     @review = @product.reviews.build
-    @new_products = Product.limit(5)
+    @new_products = Product.order(created_at: :desc).limit(5)
   end
 
   def new

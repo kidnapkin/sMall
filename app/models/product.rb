@@ -25,6 +25,8 @@ class Product < ApplicationRecord
   has_many :product_properties, dependent: :destroy
   has_many :properties, through: :product_properties
   has_many :reviews
+  has_and_belongs_to_many :related_products, join_table: :product_related,
+                                             association_foreign_key: :related_id
 
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?

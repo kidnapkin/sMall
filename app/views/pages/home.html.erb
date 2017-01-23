@@ -142,7 +142,11 @@
                                 <h2><%= link_to product.name, product %></h2>
                                 
                                 <div class="product-carousel-price">
-                                    <ins>$<%= product.price %></ins> <del>$999.00</del>
+                                    <% if product.sale %>
+                                      <ins><%= number_to_currency(product.sale_price) %></ins> <del><%= number_to_currency(product.price) %></del>
+                                    <% else %>
+                                      <ins><%= number_to_currency(product.price) %></ins>
+                                    <% end %>
                                 </div>
                                 
                                 <p><%= show_stars(product) %></p>

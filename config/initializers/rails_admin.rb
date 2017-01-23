@@ -30,6 +30,14 @@ RailsAdmin.config do |config|
       end
     end
   end
+  
+  config.model RelatedProduct do
+    visible false
+  end
+  
+  config.model ProductProperty do
+    visible false
+  end
 
   config.actions do
     dashboard                     # mandatory
