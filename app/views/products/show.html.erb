@@ -20,11 +20,7 @@
                             <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg', alt: '', class: 'recent-thumb' %>
                             <h2><%= link_to product.name, product %></h2>
                             <div class="product-sidebar-price">
-                                <% if product.sale %>
-                                  <ins><%= number_to_currency(product.sale_price) %></ins> <del><%= number_to_currency(product.price) %></del>
-                                <% else %>
-                                  <ins><%= number_to_currency(product.price) %></ins>
-                                <% end %>
+                                <%= product_price(product) %>
                             </div>                             
                         </div>
                     <% end %>
@@ -56,11 +52,7 @@
                             <div class="product-inner">
                                 <h2 class="product-name"><%= @product.name %></h2>
                                 <div class="product-inner-price">
-                                    <% if @product.sale %>
-                                      <ins><%= number_to_currency(@product.sale_price) %></ins> <del><%= number_to_currency(@product.price) %></del>
-                                    <% else %>
-                                      <ins><%= number_to_currency(@product.price) %></ins>
-                                    <% end %>
+                                    <%= product_price(@product) %>
                                 </div>    
                                 
                                     <div class="quantity">

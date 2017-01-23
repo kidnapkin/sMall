@@ -5,11 +5,7 @@
       </div>
       <h2><%= link_to product.name, product %></h2>
       <div class="product-carousel-price">
-        <% if product.sale %>
-          <ins><%= number_to_currency(product.sale_price) %></ins> <del><%= number_to_currency(product.price) %></del>
-        <% else %>
-          <ins><%= number_to_currency(product.price) %></ins>
-        <% end %>
+        <%= product_price(product) %>
         <p><%= show_stars(product) %></p>
       </div>
       

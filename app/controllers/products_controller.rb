@@ -22,11 +22,9 @@ class ProductsController < ApplicationController
   def show
     @review = @product.reviews.build
     @new_products = Product.order(created_at: :desc).limit(5)
+    @related_products = @product.related_products
   end
 
-  def new
-    @product = Product.new
-  end
 
   def create
     @product = Product.new(product_params)
