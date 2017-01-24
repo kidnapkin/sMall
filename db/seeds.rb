@@ -19,10 +19,10 @@ end
 
 Category.all.each do |category|
   5.times do
-    category.products.create!(name:         Faker::Beer.name,
-                              description:  Faker::Hipster.paragraphs,
-                              price:        Faker::Number.decimal(2),
-                              image:        Faker::Placeholdit.image)
+    category.products.create!(name: Faker::Beer.name,
+                              description: Faker::Hipster.paragraphs,
+                              price: Faker::Number.decimal(2),
+                              image: Faker::Placeholdit.image)
   end
 end
 

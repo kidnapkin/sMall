@@ -1,47 +1,47 @@
 <%= form_for(review) do |f| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <% if review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :review %>
+      <%= f.text_area :review %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :review %>
-    <%= f.text_area :review %>
-  </div>
+    <div class="field">
+      <%= f.label :product_id %>
+      <%= f.text_field :product_id %>
+    </div>
 
-  <div class="field">
-    <%= f.label :product_id %>
-    <%= f.text_field :product_id %>
-  </div>
+    <div class="field">
+      <%= f.label :author_name %>
+      <%= f.text_field :author_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :author_name %>
-    <%= f.text_field :author_name %>
-  </div>
+    <div class="field">
+      <%= f.label :author_email %>
+      <%= f.text_field :author_email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :author_email %>
-    <%= f.text_field :author_email %>
-  </div>
+    <div class="field">
+      <%= f.label :published %>
+      <%= f.check_box :published %>
+    </div>
 
-  <div class="field">
-    <%= f.label :published %>
-    <%= f.check_box :published %>
-  </div>
+    <div class="field">
+      <%= f.label :rating %>
+      <%= f.number_field :rating %>
+    </div>
 
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

@@ -1,21 +1,21 @@
 <div class="site-branding-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="logo">
-                    <h1>
-                        <%= link_to root_path do %>
-                            s<span>Mall</span>
-                        <% end %>
-                    </h1>
-                </div>
-            </div>
-            
-            <div class="col-sm-6" id="header-cart">
-              <% if @cart %>
-                <%= render 'layouts/header_cart' %>
-              <% end %>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="logo">
+          <h1>
+            <%= link_to root_path do %>
+                s<span>Mall</span>
+            <% end %>
+          </h1>
         </div>
+      </div>
+
+      <div class="col-sm-6" id="header-cart">
+        <% if @cart %>
+            <%= render 'layouts/header_cart' %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div> <!-- End site branding area -->

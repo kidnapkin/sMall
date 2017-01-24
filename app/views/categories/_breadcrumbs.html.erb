@@ -1,4 +1,4 @@
 <% categories.each do |category, children| %>
-  <%= link_to category.name, category %>
-  <%= render 'breadcrumbs', categories: children if children.present? %>
+    <%= link_to category.name, category %>
+    <%= render 'breadcrumbs', categories: children if children.present? %>
 <% end %>
