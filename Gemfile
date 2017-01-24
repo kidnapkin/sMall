@@ -26,16 +26,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-
-gem 'figaro'
 group :development do
   gem 'capistrano'
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
   gem 'capistrano-rvm'
+  gem 'capistrano-nginx'
   gem 'capistrano3-puma'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-upload-config'
+  gem 'sshkit-sudo'
 end
 
 group :development, :test do

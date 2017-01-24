@@ -49,3 +49,5 @@ Capfile
 config/deploy.rb
 config/deploy/
 lib/capistrano/
+/config/database.production.yml
+/config/secrets.production.yml
