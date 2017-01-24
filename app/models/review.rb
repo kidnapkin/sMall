@@ -16,6 +16,6 @@
 class Review < ApplicationRecord
   validates :review, :product_id, :author_name, :author_email, :rating, presence: true
   belongs_to :product
-  
-  scope :published, -> {  where(published: true) }
+
+  scope :published, -> { where(published: true) }
 end

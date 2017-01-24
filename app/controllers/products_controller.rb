@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
     @related_products = @product.related_products
   end
 
-
   def create
     @product = Product.new(product_params)
 

@@ -36,8 +36,8 @@ class Product < ApplicationRecord
       false
     end
   end
-  
+
   def self.search(search_query)
-    where("name ILIKE ? OR description LIKE ?", "%#{search_query}%", "%#{search_query}%") 
+    where('name ILIKE ? OR description LIKE ?', "%#{search_query}%", "%#{search_query}%")
   end
 end

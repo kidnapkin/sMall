@@ -31,7 +31,6 @@ class LineItemsController < ApplicationController
     end
   end
 
-
   def destroy
     @line_item.destroy
     respond_to do |format|

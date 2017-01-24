@@ -31,13 +31,13 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   private
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    def review_params
-      params.require(:review).permit(:review, :product_id, :author_name, :author_email, :published, :rating)
-    end
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  def review_params
+    params.require(:review).permit(:review, :product_id, :author_name, :author_email, :published, :rating)
+  end
 end
