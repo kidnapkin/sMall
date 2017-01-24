@@ -7,6 +7,7 @@ capybara-*.html
 /db/*.sqlite3-journal
 /public/system
 /public/uploads
+.idea/
 /coverage/
 /spec/tmp
 **.orig
@@ -43,3 +44,7 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+Capfile
+config/deploy.rb
+config/deploy/
+lib/capistrano/
