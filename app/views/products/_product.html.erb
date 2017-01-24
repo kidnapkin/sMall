@@ -5,9 +5,9 @@
       </div>
       <h2><%= link_to product.name, product %></h2>
       <div class="product-carousel-price">
-        <ins><%= number_to_currency(product.price) %></ins> <del>$999.00</del>
+        <%= product_price(product) %>
         <p><%= show_stars(product) %></p>
-      </div>  
+      </div>
       
       <div class="product-option-shop">
           <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'add_to_cart_button', remote: true %>

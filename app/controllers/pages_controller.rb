@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @products = Product.limit(6)
+    @products = Product.order(created_at: :desc).limit(6)
   end
 
   def about; end

@@ -7,10 +7,12 @@
             <div class="col-md-4">
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Search Products</h2>
-                    <form action="">
-                        <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
-                    </form>
+                    
+                    <%= form_tag products_path, method: :get do %>
+                        <%= text_field_tag :search_query, params[:search_query], placeholder: 'Search products...' %>
+                        <%= submit_tag "Search", name: nil %>
+                    <% end %>
+                    
                 </div>
                 
                 <div class="single-sidebar">
@@ -20,20 +22,12 @@
                             <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg', alt: '', class: 'recent-thumb' %>
                             <h2><%= link_to product.name, product %></h2>
                             <div class="product-sidebar-price">
-                                <ins><%= number_to_currency(product.price) %></ins> <del>$800.00</del>
+                                <%= product_price(product) %>
                             </div>                             
                         </div>
                     <% end %>
                 </div>
-                
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Recent Posts</h2>
-                    <ul>
-                        <% @new_products.each do |product| %>
-                            <li><%= link_to product.name, product %></li>
-                        <% end %>
-                    </ul>
-                </div>
+            
             </div>
             
             <div class="col-md-8">
@@ -52,13 +46,6 @@
                                 <div class="product-main-img">
                                     <%= image_tag @product.image? ? @product.image.url : 'product-placeholder.jpg' %>
                                 </div>
-                                
-                                <!--<div class="product-gallery">-->
-                                    <% # image_tag "product-6.jpg", alt: '' %>
-                                    <% # image_tag "product-6.jpg", alt: '' %>
-                                    <% # image_tag "product-6.jpg", alt: '' %>
-                                    <% # image_tag "product-6.jpg", alt: '' %>
-                                <!--</div>-->
                             </div>
                         </div>
                         
@@ -67,7 +54,7 @@
                             <div class="product-inner">
                                 <h2 class="product-name"><%= @product.name %></h2>
                                 <div class="product-inner-price">
-                                    <ins><%= @product.price %></ins> <del>$800.00</del>
+                                    <%= product_price(@product) %>
                                 </div>    
                                 
                                     <div class="quantity">
@@ -75,9 +62,6 @@
                                     </div>
                                     <%= button_to 'Add to Cart', line_items_path(product_id: @product), class: 'add_to_cart_button' %>
                                 
-                                <div class="product-inner-category">
-                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
-                                </div> 
                                 
                                 <div role="tabpanel">
                                     <ul class="product-tab" role="tablist">
@@ -154,101 +138,40 @@
                         </div>
                     </div>
                     
-
-                    <div class="related-products-wrapper">
+                    <% if @product.related_products.any? %>
+                        <div class="related-products-wrapper">
                         <h2 class="related-products-title">Related Products</h2>
                         <div class="related-products-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                            
+                            <% @product.related_products.each do |product| %>
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <%= image_tag product.image? ? product.image.url : 'product-placeholder.jpg' %>
+                                        <div class="product-hover">
+                                            <%= link_to line_items_path(product_id: product), class: 'add-to-cart-link', method: :post, remote: true do %>
+                                                <i class="fa fa-shopping-cart"></i> Add to cart
+                                            <% end %>
+                                            <%= link_to product_path(product), class: 'view-details-link' do %>
+                                                <i class="fa fa-link"></i> See details
+                                            <% end %>
+                                        </div>
+                                    </div>
+    
+                                    <h2><%= link_to product.name, product_path(product) %></h2>
+    
+                                    <div class="product-carousel-price">
+                                        <% if product.sale %>
+                                          <ins><%= number_to_currency(product.sale_price) %></ins> <del><%= number_to_currency(product.price) %></del>
+                                        <% else %>
+                                          <ins><%= number_to_currency(product.price) %></ins>
+                                        <% end %>
                                     </div>
                                 </div>
-
-                                <h2><a href="">Sony Smart TV - 2015</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$700.00</ins> <del>$800.00</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="">Apple new mac book 2015 March :P</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>$899.00</ins> <del>$999.00</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="">Apple new i phone 6</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="">Sony playstation microsoft</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$200.00</ins> <del>$225.00</del>
-                                </div>                            
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="">Sony Smart Air Condtion</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$1200.00</ins> <del>$1355.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <%= image_tag "product-6.jpg", alt: '' %>
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="">Samsung gallaxy note 4</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins>
-                                </div>                            
-                            </div>                                    
+                            <% end %>
+                                
                         </div>
                     </div>
+                    <% end %>
                 </div>                    
             </div>
         </div>
