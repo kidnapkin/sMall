@@ -16,7 +16,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.order(created_at: :desc).includes(:reviews).paginate(page: params[:page], per_page: 8)
+    if params[:search_query]
+      @products = Product.search(params[:search_query]).order(created_at: :desc).includes(:reviews).paginate(page: params[:page], per_page: 8)
+    else
+      @products = Product.order(created_at: :desc).includes(:reviews).paginate(page: params[:page], per_page: 8)
+    end
   end
 
   def show

@@ -7,10 +7,12 @@
             <div class="col-md-4">
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Search Products</h2>
-                    <form action="">
-                        <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
-                    </form>
+                    
+                    <%= form_tag products_path, method: :get do %>
+                        <%= text_field_tag :search_query, params[:search_query], placeholder: 'Search products...' %>
+                        <%= submit_tag "Search", name: nil %>
+                    <% end %>
+                    
                 </div>
                 
                 <div class="single-sidebar">
@@ -60,9 +62,6 @@
                                     </div>
                                     <%= button_to 'Add to Cart', line_items_path(product_id: @product), class: 'add_to_cart_button' %>
                                 
-                                <div class="product-inner-category">
-                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
-                                </div> 
                                 
                                 <div role="tabpanel">
                                     <ul class="product-tab" role="tablist">
