@@ -29,14 +29,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
-
 gem 'figaro'
 group :development do
   gem 'capistrano'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
   gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do
@@ -46,8 +45,8 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -65,15 +64,15 @@ gem 'faker', github: 'stympy/faker'
 # Uploader generator
 gem 'carrierwave', '0.11.2'
 # Image processitg
-gem 'mini_magick', '4.5.1'
 gem 'fog', '1.38.0'
+gem 'mini_magick', '4.5.1'
 # Tree structured models
 gem 'ancestry'
 # Cute admin panel
 gem 'rails_admin', '~> 1.1.1'
 # Paginatorss
-gem 'will_paginate', '~> 3.1', '>= 3.1.5'
-gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'annotate'
-gem 'rails_admin_simple_has_many', '~> 0.0.5'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'rails_admin_multiple_file_upload', '~> 0.5.0'
+gem 'rails_admin_simple_has_many', '~> 0.0.5'
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'

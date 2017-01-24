@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
-lock "3.7.1"
+lock '3.7.1'
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, 'my_app_name'
+set :repo_url, 'git@example.com:me/my_repo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -37,8 +37,8 @@ set :repo_url, 'git@github.com:kidnapkin/sMall.git'
 set :branch, :master
 set :deploy_to, '/home/deploy/sMall'
 set :pty, true
-set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_files, %w(config/database.yml config/application.yml)
+set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads)
 set :keep_releases, 5
 set :rvm_type, :user
 set :rvm_ruby_version, '2.3.3'

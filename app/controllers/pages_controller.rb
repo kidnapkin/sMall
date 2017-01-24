@@ -3,6 +3,5 @@ class PagesController < ApplicationController
     @products = Product.order(created_at: :desc).limit(6)
   end
 
-  def about;
-  end
+  def about; end
 end

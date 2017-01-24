@@ -19,8 +19,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   # GET /carts/1.json
-  def show;
-  end
+  def show; end
 
   # GET /carts/new
   def new
@@ -28,8 +27,7 @@ class CartsController < ApplicationController
   end
 
   # GET /carts/1/edit
-  def edit;
-  end
+  def edit; end
 
   # POST /carts
   # POST /carts.json
