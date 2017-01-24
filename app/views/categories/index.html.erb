@@ -25,13 +25,13 @@
                 <div class="row is-flex">
                     <%= render @products || 'There are no products available.' %>
                 </div>
-  
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-pagination text-center">
                             <nav>
                               <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
-                            </nav>                        
+                            </nav>
                         </div>
                     </div>
                 </div>
