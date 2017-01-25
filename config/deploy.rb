@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:kidnapkin/sMall.git'
 set :user, 'deployer'
 set :application, 'sMall'
 set :rails_env, 'production'
-server '52.59.219.57', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
+server '35.157.91.248', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :pty, true
 
@@ -17,6 +17,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :config_example_suffix, '.example'
 set :config_files, %w{config/database.yml config/secrets.yml}
 set :puma_conf, "#{shared_path}/config/puma.rb"
+set :nginx_use_ssl, true
 
 namespace :deploy do
   before 'check:linked_files', 'config:push'
