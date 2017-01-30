@@ -1,6 +1,6 @@
 <div class="shopping-item">
-  <%= link_to @cart do %>
-      Cart - <span class="cart-amunt" id="cart-amount"><%= number_to_currency(@cart.total_price) %></span>
-      <i class="fa fa-shopping-cart"></i> <span class="product-count" id="cart-count"><%= @cart.total_quantity %></span>
+  <%= link_to cart do %>
+      Cart - <span class="cart-amunt" id="cart-amount"><%= number_to_currency(cart.total_price) %></span>
+      <i class="fa fa-shopping-cart"></i> <span class="product-count" id="cart-count"><%= cart.total_quantity %></span>
   <% end %>
 </div>

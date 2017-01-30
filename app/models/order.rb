@@ -13,6 +13,7 @@
 
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  attr_accessor :card_number, :card_cvv, :card_expires_month, :card_expires_year, :token
 
   enum pay_type: {
     'Check' => 0,
@@ -32,4 +33,22 @@ class Order < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
+
+
+  def self.month_options
+    Date::MONTHNAMES.compact.each_with_index.map { |name, i| ["#{i+1} - #{name}", i+1]}
+  end
+
+  def self.year_options
+    (Date.today.year..(Date.today.year+10)).to_a
+  end
+
+  def process_payment(cart)
+    customer = Stripe::Customer.create email: email, card: token
+
+    Stripe::Charge.create customer: customer.id,
+                          amount: (cart.total_price * 100).to_i,
+                          description: 'sMall order',
+                          currency: 'usd'
+  end
 end

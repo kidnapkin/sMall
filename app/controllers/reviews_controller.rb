@@ -11,10 +11,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review.product, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
       else
         format.html { redirect_to @review.product, alert: "Failed to create! #{@review.errors.full_messages.join(', ')}" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end

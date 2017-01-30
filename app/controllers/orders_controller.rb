@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+
+    @order.process_payment(@cart) if params[:pay_type] == 'Credit card'
+
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
@@ -32,7 +35,11 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:name, :address, :email, :pay_type)
+    if params[:payment]
+      params.require(:order).permit(:name, :address, :email, :pay_type).merge(params.require(:payment).permit(:token))
+    else
+      params.require(:order).permit(:name, :address, :email, :pay_type)
+    end
   end
 
   def ensure_cart_isnt_empty

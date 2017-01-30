@@ -12,8 +12,8 @@
       </div>
 
       <div class="col-sm-6" id="header-cart">
-        <% if @cart %>
-            <%= render 'layouts/header_cart' %>
+        <% if cart %>
+            <%= render 'layouts/header_cart', cart: cart %>
         <% end %>
       </div>
     </div>

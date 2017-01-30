@@ -21,11 +21,29 @@
           <%= f.text_field :email %>
         </div>
 
+        <script>
+          function render_stripe_fields(payType) {
+            if(payType == 'Credit card') {
+              $('#stripe-fields').html("<%=j render 'stripe_fields', f: f %>");
+            } else {
+              $('#stripe-fields').html('');
+            }
+          }
+        </script>
         <div class="form-row form-row-first validate-required">
           <%= f.label :pay_type %>
-          <%= f.select :pay_type, Order.pay_types.keys,
-                       prompt: 'Select a payment method', class: "country_to_state country_select" %>
+          <% Order.pay_types.each do |pay_type, value| %>
+            <div class="radio">
+              <label>
+                <%= f.radio_button :pay_type, pay_type, onclick: "render_stripe_fields('#{pay_type}');" %>
+                <%= pay_type %>
+              </label>
+            </div>
+          <% end %>
         </div>
+
+
+        <div id="stripe-fields"></div>
 
         <div class="form-row place-order">
           <%= f.submit 'Place Order' %>
