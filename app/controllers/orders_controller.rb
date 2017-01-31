@@ -11,8 +11,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-
-    @order.process_payment(@cart) if params[:pay_type] == 'Credit card'
+    @order.process_payment(@cart) if params[:order][:pay_type] == 'Credit card'
 
     respond_to do |format|
       if @order.save
